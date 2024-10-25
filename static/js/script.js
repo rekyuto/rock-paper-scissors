@@ -43,7 +43,7 @@ function playGame(){
 
 function playRound(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
-        console.log("Tie! You chose the same!");
+        console.log("Tie! No points are given!");
     } else if (humanChoice === "Rock" && computerChoice === "Paper") {
         computerScore++;
         console.log("Computer wins! Paper beats rock!");
@@ -63,7 +63,7 @@ function playRound(humanChoice, computerChoice){
         humanScore++;
         console.log("You win! Scissors beats paper!");
     } else {
-        console.log("You entered in an invalid choice! No points are given!");
+        console.log("Unknown input! No points are given!");
     }
 };
 
