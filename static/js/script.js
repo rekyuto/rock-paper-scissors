@@ -72,6 +72,18 @@ playRound(humanSelection, computerSelection);
 
 };
 
+// Compare the final scores to determine the winner
+
+function totalScores(){
+    if (humanScore === computerScore){
+        console.log("It's a tie!");
+    } else if (humanScore > computerScore){
+        console.log("You win!");
+    } else {
+        console.log("You lose! Better luck next time!");
+    }
+};
+
 // Plays five rounds of rock, paper, scissors
 
 playGame();
@@ -79,3 +91,7 @@ playGame();
 playGame();
 playGame();
 playGame();
+
+console.log(`Your score: ${humanScore} Computer score: ${computerScore}`);
+
+totalScores();
