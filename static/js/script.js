@@ -17,20 +17,65 @@ function getComputerChoice(){
 
 // Gets the user's choice
 
-let humanChoice = prompt("Rock, paper, or scissors? ").toLowerCase();
-
 function getHumanChoice(){
+    let choice = prompt("Rock, paper, or scissors? ").toLowerCase();
     let answer = "";
 
-    if (humanChoice === "rock") {
+    if (choice === "rock") {
         answer = "Rock";
-    } else if (humanChoice === "paper"){
+    } else if (choice === "paper"){
         answer = "Paper";
-    } else if (humanChoice === "scissors"){
+    } else if (choice === "scissors"){
         answer = "Scissors";
-    } else {
-        answer = "You did not enter in a proper choice!";
     }
 
     return answer;
 };
+
+// Iniitalize human and computer scores
+ 
+let humanScore = 0;
+let computerScore = 0;
+
+// Plays a game of rock, paper, scissors
+
+function playGame(){
+
+function playRound(humanChoice, computerChoice){
+    if (humanChoice === computerChoice){
+        console.log("Tie! You chose the same!");
+    } else if (humanChoice === "Rock" && computerChoice === "Paper") {
+        computerScore++;
+        console.log("Computer wins! Paper beats rock!");
+    } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
+        humanScore++;
+        console.log("You win! Rock beats scissors!");
+    } else if (humanChoice === "Paper" && computerChoice === "Rock"){
+        humanScore++;
+        console.log("You win! Paper beats rock!");
+    } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
+        computerScore++;
+        console.log("Computer wins! Scissors beats paper!");
+    } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
+        computerScore++;
+        console.log("Computer wins! Rock beats scissors!");
+    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
+        humanScore++;
+        console.log("You win! Scissors beats paper!");
+    }
+};
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+};
+
+// Plays five rounds of rock, paper, scissors
+
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
