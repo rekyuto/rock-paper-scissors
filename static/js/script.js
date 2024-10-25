@@ -62,6 +62,8 @@ function playRound(humanChoice, computerChoice){
     } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
         humanScore++;
         console.log("You win! Scissors beats paper!");
+    } else {
+        console.log("You entered in an invalid choice! No points are given!");
     }
 };
 
@@ -95,3 +97,5 @@ playGame();
 console.log(`Your score: ${humanScore} Computer score: ${computerScore}`);
 
 totalScores();
+
+console.log("Want to play again? Refresh the page to start a new game!");
