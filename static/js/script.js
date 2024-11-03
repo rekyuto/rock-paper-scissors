@@ -15,11 +15,13 @@ function getComputerChoice(){
     return result;
 };
 
-// Initializes human, computer, and tied scores
+// Initializes human, computer, tied, and max scores
 
 let humanScore = 0;
 let computerScore = 0;
 let tiedScore = 0;
+
+const maxScore = 5;
 
 const humanScoreValue = document.querySelector("#humanScoreValue");
 const computerScoreValue = document.querySelector("#computerScoreValue");
@@ -31,32 +33,75 @@ function playRound(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
         tiedScore++
         tiedScoreValue.textContent = tiedScore;
-        console.log("Tie! No points are given!");
     } else if (humanChoice === "Rock" && computerChoice === "Paper") {
         computerScore++;
         computerScoreValue.textContent = computerScore;
-        console.log("Computer wins! Paper beats rock!");
     } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
         humanScore++;
         humanScoreValue.textContent = humanScore;
-        console.log("You win! Rock beats scissors!");
     } else if (humanChoice === "Paper" && computerChoice === "Rock"){
         humanScore++;
         humanScoreValue.textContent = humanScore;
-        console.log("You win! Paper beats rock!");
     } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
         computerScore++;
         computerScoreValue.textContent = computerScore;
-        console.log("Computer wins! Scissors beats paper!");
     } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
         computerScore++;
         computerScoreValue.textContent = computerScore;
-        console.log("Computer wins! Rock beats scissors!");
     } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
         humanScore++;
         humanScoreValue.textContent = humanScore;
-        console.log("You win! Scissors beats paper!");
     }
+
+    declareWinner();
+};
+
+// Declares a winner
+
+function declareWinner(){
+    const winnerReset = document.querySelector("#winnerReset");
+    const winner = document.createElement("h3");
+    const resetButton = document.createElement("button");
+
+    resetButton.textContent = "Reset Scores";
+
+    // Disables buttons when maxScore is achieved
+
+    if ((humanScore === maxScore) || (computerScore === maxScore)){
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+    }
+
+    // Appends winner and resetButton to #winnerReser
+
+    if (computerScore === maxScore){
+        winner.textContent = "Computer Wins!";
+        winnerReset.appendChild(winner);
+        winnerReset.appendChild(resetButton);
+    } else if (humanScore === maxScore){
+        winner.textContent = "You Win!"
+        winnerReset.appendChild(winner);
+        winnerReset.appendChild(resetButton);
+    }   
+
+    // Removes everything in #winnerReset, resets scores to 0, and reenables buttons when resetButton is clicked
+
+    resetButton.addEventListener("click", () => {
+        humanScore = 0;
+        humanScoreValue.textContent = humanScore;
+        computerScore = 0;
+        computerScoreValue.textContent = computerScore;
+        tiedScore = 0;
+        tiedScoreValue.textContent = tiedScore;
+
+        rock.disabled = false;
+        paper.disabled = false;
+        scissors.disabled = false;
+
+        winnerReset.removeChild(winner);
+        winnerReset.removeChild(resetButton);
+    });
 };
 
 // Gets the user choice by clicking the corresponding button
@@ -85,91 +130,3 @@ scissors.addEventListener("click", () => {
 
     playRound(humanSelection, computerSelection);
 });
-
-/*
-// Gets the user's choice
-
-function getHumanChoice(){
-    let choice = prompt("Rock, paper, or scissors? ").toLowerCase();
-    let answer = "";
-
-    if (choice === "rock") {
-        answer = "Rock";
-    } else if (choice === "paper"){
-        answer = "Paper";
-    } else if (choice === "scissors"){
-        answer = "Scissors";
-    }
-
-    return answer;
-};
-
-// Iniitalize human and computer scores
- 
-let humanScore = 0;
-let computerScore = 0;
-
-// Plays a game of rock, paper, scissors
-
-
-function playGame(){
-
-function playRound(humanChoice, computerChoice){
-    if (humanChoice === computerChoice){
-        console.log("Tie! No points are given!");
-    } else if (humanChoice === "Rock" && computerChoice === "Paper") {
-        computerScore++;
-        console.log("Computer wins! Paper beats rock!");
-    } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
-        humanScore++;
-        console.log("You win! Rock beats scissors!");
-    } else if (humanChoice === "Paper" && computerChoice === "Rock"){
-        humanScore++;
-        console.log("You win! Paper beats rock!");
-    } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
-        computerScore++;
-        console.log("Computer wins! Scissors beats paper!");
-    } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
-        computerScore++;
-        console.log("Computer wins! Rock beats scissors!");
-    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-        humanScore++;
-        console.log("You win! Scissors beats paper!");
-    } else {
-        console.log("Unknown input! No points are given!");
-    }
-};
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-
-};
-
-// Compare the final scores to determine the winner
-
-function totalScores(){
-    if (humanScore === computerScore){
-        console.log("It's a tie!");
-    } else if (humanScore > computerScore){
-        console.log("You win!");
-    } else {
-        console.log("You lose! Better luck next time!");
-    }
-};
-
-// Plays five rounds of rock, paper, scissors
-
-playGame();
-playGame();
-playGame();
-playGame();
-playGame();
-
-console.log(`Your score: ${humanScore} Computer score: ${computerScore}`);
-
-totalScores();
-
-console.log("Want to play again? Refresh the page to start a new game!");
-*/
