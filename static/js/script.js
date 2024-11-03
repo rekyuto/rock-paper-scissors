@@ -15,6 +15,33 @@ function getComputerChoice(){
     return result;
 };
 
+// Gets the user choice by clicking the corresponding button
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", () => {
+    const humanSelection = "Rock"
+    const computerSelection = getComputerChoice();
+
+    playRound(humanSelection, computerSelection);
+});
+
+paper.addEventListener("click", () => {
+    const humanSelection = "Paper"
+    const computerSelection = getComputerChoice();
+
+    playRound(humanSelection, computerSelection);
+});
+
+scissors.addEventListener("click", () => {
+    const humanSelection = "Scissors"
+    const computerSelection = getComputerChoice();
+
+    playRound(humanSelection, computerSelection);
+});
+
 // Initializes human, computer, tied, and max scores
 
 let humanScore = 0;
@@ -23,9 +50,13 @@ let tiedScore = 0;
 
 const maxScore = 5;
 
+// Assigns HTML elements to JS variables
+
 const humanScoreValue = document.querySelector("#humanScoreValue");
 const computerScoreValue = document.querySelector("#computerScoreValue");
 const tiedScoreValue = document.querySelector("#tiedScoreValue");
+const humanChoiceText = document.querySelector("#humanChoiceText");
+const computerChoiceText = document.querySelector("#computerChoiceText");
 
 // Plays a round of rock, paper, scissors
 
@@ -53,6 +84,9 @@ function playRound(humanChoice, computerChoice){
         humanScoreValue.textContent = humanScore;
     }
 
+    humanChoiceText.textContent = humanChoice;
+    computerChoiceText.textContent = computerChoice;
+
     declareWinner();
 };
 
@@ -63,7 +97,7 @@ function declareWinner(){
     const winner = document.createElement("h3");
     const resetButton = document.createElement("button");
 
-    resetButton.textContent = "Reset Scores";
+    resetButton.textContent = "New Game";
 
     // Disables buttons when maxScore is achieved
 
@@ -73,7 +107,7 @@ function declareWinner(){
         scissors.disabled = true;
     }
 
-    // Appends winner and resetButton to #winnerReser
+    // Appends winner and resetButton to #winnerReset
 
     if (computerScore === maxScore){
         winner.textContent = "Computer Wins!";
@@ -103,30 +137,3 @@ function declareWinner(){
         winnerReset.removeChild(resetButton);
     });
 };
-
-// Gets the user choice by clicking the corresponding button
-
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
-
-rock.addEventListener("click", () => {
-    const humanSelection = "Rock"
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-});
-
-paper.addEventListener("click", () => {
-    const humanSelection = "Paper"
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-});
-
-scissors.addEventListener("click", () => {
-    const humanSelection = "Scissors"
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-});
