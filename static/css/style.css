@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+.header {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.header-title {
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.header-caption {
+    font-size: 24px;
+}
+
+.stelle {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.stelle-gif {
+    height: 200px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.scoreChoices {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.choices {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    gap: 25px;
+}
+
+.scores {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.winnerReset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    gap: 10px;
+    padding: 20px;
+}
+
+button {
+    background-color: gray;
+    color: white;
+    border-radius: 20px;
+    padding: 5px 20px;
+    font-size: 30px;
+}
+
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+* {
+    font-family: "DM Sans", sans-serif;
+}

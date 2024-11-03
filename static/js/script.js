@@ -93,8 +93,8 @@ function playRound(humanChoice, computerChoice){
 // Declares a winner
 
 function declareWinner(){
-    const winnerReset = document.querySelector("#winnerReset");
-    const winner = document.createElement("h3");
+    const winnerReset = document.querySelector(".winnerReset");
+    const winner = document.createElement("div");
     const resetButton = document.createElement("button");
 
     resetButton.textContent = "New Game";
@@ -110,7 +110,7 @@ function declareWinner(){
     // Appends winner and resetButton to #winnerReset
 
     if (computerScore === maxScore){
-        winner.textContent = "Computer Wins!";
+        winner.textContent = "Stelle Wins!";
         winnerReset.appendChild(winner);
         winnerReset.appendChild(resetButton);
     } else if (humanScore === maxScore){
